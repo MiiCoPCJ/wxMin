@@ -1,0 +1,11 @@
+<form name='pushMsgFm' report-submit='true' bindsubmit='getFormID'>
+      <button form-type="submit" class="zan-btn zan-btn--large zan-btn--danger payButton">推送</button>
+</form>
+<button bindtap='login'>登录</button>
+<button bindtap='getOpenId'>获取openid</button>
+<form name='pushMsgFm' report-submit='true' bindsubmit='saveformIdOutline'>
+      <button form-type="submit" class="zan-btn zan-btn--large zan-btn--danger payButton">outline保存formId</button>
+</form>
+<form name='pushMsgFm' report-submit='true' bindsubmit='saveformIdOnline'>
+      <button form-type="submit" class="zan-btn zan-btn--large zan-btn--danger payButton">online保存formId</button>
+</form>

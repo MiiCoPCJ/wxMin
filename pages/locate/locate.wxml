@@ -1,0 +1,15 @@
+<!--index.wxml-->
+<form  report-submit='true' bindsubmit='getPosition'>
+      <button form-type="submit" >获取</button>
+</form>
+
+
+
+<view class="container">
+  <view >
+    <text >longitude:{{lon}}</text>
+  </view>
+  <view >
+    <text >latitude:{{lat}}</text>
+  </view>
+</view>

@@ -1,0 +1,21 @@
+<form  report-submit='true' bindsubmit='getUserData'>
+      <button open-type="getUserInfo" form-type="submit" >获取用户信息</button>
+</form>
+
+<button bindtap='getCode'>获取wx.code</button>
+<button bindtap='getOpenId'>获取openid</button>
+
+<button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">获取手机加密数据</button>
+<button open-type="getUserInfo" bindtap='getPhoneNumberBate'>获取手机加密数据-bate</button>
+
+<view class="container">
+  <view >
+    <text >userInfo:{{userInfo}}</text>
+  </view>
+  <view >
+    <text >hasUserInfo:{{hasUserInfo}}</text>
+  </view>
+  <view >
+    <text >canIUse:{{canIUse}}</text>
+  </view>
+</view>

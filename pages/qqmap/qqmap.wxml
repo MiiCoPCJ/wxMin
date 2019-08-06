@@ -1,0 +1,9 @@
+<map
+id="myMap"
+style="width: 100%; height: 300px;"
+longitude="116.313972" latitude="39.980014"
+scale='16'
+subkey="QT4BZ-RW6RK-ORWJ3-AVLKN-X56R6-YHBFT"
+polyline="{{polyline}}"
+markers="{{markers}}"
+></map>
