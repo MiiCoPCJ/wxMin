@@ -15,7 +15,7 @@ include_once __DIR__."/wx/pkcs7Encoder.php";
 
 class WeixinController extends ApiController{
 
-    
+
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -119,25 +119,37 @@ class WeixinController extends ApiController{
     public function decryptedPhone()
     {
 
-        $appid = I('appid');
-        $secret = I('secret');
-        $js_code = I('code');
-        $encryptedData = I('encryptedData');
-        $iv = I('iv');
+      $appid = I('appid');
+      $secret = I('secret');
+      $js_code = I('code');
+      $encryptedData = I('encryptedData');
+      $iv = I('iv');
 
-        $grant_type='authorization_code';
-
-        $objSession=$this->http_curl("https://api.weixin.qq.com/sns/jscode2session?appid=$appid&secret=$secret&js_code=$js_code&grant_type=$grant_type");
-        $session_key = json_decode($objSession,true)['session_key'];
-
-
-        $data = '';
+      $encryptedData = urldecode($encryptedData);
+      $iv = urldecode($iv);
+      $js_code = urldecode($js_code);
 
 
-        $decodeData = new \WXBizDataCrypt($appid, $session_key);
-        $errCode = $decodeData->decryptData($encryptedData, $iv, $data );
 
-        \Org\Response::show(0,"获取成功！",$data);
+      $openid = I('openid');
+      $session_key = I('session_key');
+      $session_key = urldecode($session_key);
+
+      $grant_type='authorization_code';
+
+      if(empty($session_key)){
+          $objSession=$this->http_curl("https://api.weixin.qq.com/sns/jscode2session?appid=$appid&secret=$secret&js_code=$js_code&grant_type=$grant_type");
+          $objSession = stripslashes($objSession);
+          $session_key = json_decode($objSession,true)['session_key'];
+      }
+
+
+      $data = '';
+
+      $decodeData = new \WXBizDataCrypt($appid, $session_key);
+      $errCode = $decodeData->decryptData($encryptedData, $iv, $data );
+
+      \Org\Response::show(0,$errCode,$data);
 
     }
     function http_curl($url){

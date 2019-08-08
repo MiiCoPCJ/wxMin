@@ -76,38 +76,104 @@ Page({
     })
   },
 
+
+  getPhoneNumberAlpha:function(e){
+      console.log(e);
+      var ivObj = e.detail.iv;
+      var telObj = e.detail.encryptedData;
+      var appid = 'wx0a6d901750d60609';
+      var secret = '4272aed411d948b01c829e5442d534ce';
+      wx.login({
+        success: function (res) {
+          console.log(res);
+
+          //访问登录凭证校验接口获取session_key、openid
+          wx.request({
+            url: "https://api.weixin.qq.com/sns/jscode2session",
+            data: {
+              'appid': appid,
+              'secret': secret,
+              'js_code': res.code,
+              'grant_type': "authorization_code"
+            },
+            method: 'GET',
+            header: {
+              'content-type': 'application/json'
+            },
+            success: function (data) {
+              console.log("data", data)
+              if (data.statusCode == 200) {
+
+                  wx.request({
+                    url: 'http://whjz.local/index.php?s=/api/weixin/decryptedPhone',
+                    data: {
+                      appid: appid,
+                      secret: secret,
+                      session_key: encodeURIComponent(data.data.session_key),
+                      //encryptedData: telObj,
+                      //iv: ivObj
+                      encryptedData: encodeURIComponent(telObj),
+                      iv: encodeURIComponent(ivObj),
+                    },
+                    header: {
+                      'content-type': 'application/json'
+                    },
+                    success: function (res) {
+                      console.log(res);
+                      // phoneObj = res.data.phoneNumber;
+                      // console.log("手机号=", phoneObj)
+                      // wx.setStorage({
+                      //   key: "phoneObj",
+                      //   data: res.data.phoneNumber,
+                      // })
+                    }
+                  });
+              }
+            }
+          });
+        }
+      });
+
+    },
+
+
   getPhoneNumber:function(e){
+    console.log(e);
     var ivObj = e.detail.iv
     var telObj = e.detail.encryptedData
     wx.login({
       success: function (res) {
-        wx.setStorageSync('wx_code', res.code);
-      }
-    });
-    var appid = 'wx0a6d901750d60609';
-    var secret = '4272aed411d948b01c829e5442d534ce';
-    wx.request({
-      url: 'http://whjz.local/index.php?s=/api/weixin/decryptedPhone',
-      data: {
-        appid: appid,
-        secret: secret,
-        code: wx.getStorageSync('wx_code'),
-        encryptedData: telObj,
-        iv: ivObj
-      },
-      header: {
-        'content-type': 'application/json'
-      },
-      success: function (res) {
         console.log(res);
-        // phoneObj = res.data.phoneNumber;
-        // console.log("手机号=", phoneObj)
-        // wx.setStorage({
-        //   key: "phoneObj",
-        //   data: res.data.phoneNumber,
-        // })
+        var appid = 'wx0a6d901750d60609';
+        var secret = '4272aed411d948b01c829e5442d534ce';
+
+        wx.request({
+          url: 'http://whjz.local/index.php?s=/api/weixin/decryptedPhone',
+          data: {
+            appid: appid,
+            secret: secret,
+            code: encodeURIComponent(res.code),
+            //encryptedData: telObj,
+            //iv: ivObj
+            encryptedData: encodeURIComponent(telObj),
+            iv: encodeURIComponent(ivObj),
+          },
+          header: {
+            'content-type': 'application/json'
+          },
+          success: function (res) {
+            console.log(res);
+            // phoneObj = res.data.phoneNumber;
+            // console.log("手机号=", phoneObj)
+            // wx.setStorage({
+            //   key: "phoneObj",
+            //   data: res.data.phoneNumber,
+            // })
+          }
+        });
       }
     });
+
   },
 
   getOpenId:function(e){
