@@ -35,4 +35,9 @@
           <view>用户</view>
       </navigator>
   </view>
+  <view class="">
+      <navigator class="nav-item" url="/pages/pay/pay">
+          <view>支付</view>
+      </navigator>
+  </view>
 </view>

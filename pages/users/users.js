@@ -178,8 +178,10 @@ Page({
 
   getOpenId:function(e){
     var url = 'https://api.weixin.qq.com/sns/jscode2session';
-    var appid = 'wx0a6d901750d60609';
-    var secret = '4272aed411d948b01c829e5442d534ce';
+    //var appid = 'wx6d424ce04b9fdce8';
+    //var secret = 'ad2b3453f8b91c6fe8143e689151ee22';
+    var appid = 'wxf1ccf2bf44c7b499';
+    var secret = '91950ce77ffba8c0ac70f19f863a7292';
     wx.request({
       url: url,
       data: {
@@ -193,8 +195,8 @@ Page({
       },
       success: function (res) {
         console.log(res);
-        wx.setStorageSync('session_key', '');
-        wx.setStorageSync('openid', '');
+        wx.setStorageSync('session_key', res.session_key);
+        wx.setStorageSync('openid', res.opentid);
       },
       fail:function(res){
         console.log(res);

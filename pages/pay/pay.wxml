@@ -1,0 +1,12 @@
+<!--index.wxml-->
+<form  report-submit='true' bindsubmit='postPay'>
+      <button form-type="submit" >支付</button>
+</form>
+
+
+
+<view class="container">
+  <view >
+    <text >data:</text>
+  </view>
+</view>

@@ -1,0 +1,123 @@
+<?php
+
+namespace backend\controllers;
+
+use Yii;
+use yii\filters\AccessControl;
+use yii\web\Controller;
+use yii\web\Response;
+use yii\filters\VerbFilter;
+use app\models\LoginForm;
+use app\models\ContactForm;
+use luweiss\wechat\Wechat;
+use luweiss\Wechat\WechatPay;
+
+class DefaultController extends Controller
+{
+
+
+    public function actionIndex()
+    {
+        echo 'test';
+    }
+
+    public function actionPay(){
+
+
+      $appId = 'wxf1ccf2bf44c7b499';
+      $openid = 'oFMhW4zOSgGRklkHUay3TaJO3vKg'; //openid 是根据appid和secret生成,不同小程序不同
+      $mchId = 1535389461;
+      $key = '3hIOHNd823j8hfa2hI7nMva25dCa9j0n';
+
+      $certPemFile = '-----BEGIN CERTIFICATE-----
+MIID6TCCAtGgAwIBAgIUH2aZ2lR+XQSELSDNQlcEO9FhPv8wDQYJKoZIhvcNAQEL
+BQAwXjELMAkGA1UEBhMCQ04xEzARBgNVBAoTClRlbnBheS5jb20xHTAbBgNVBAsT
+FFRlbnBheS5jb20gQ0EgQ2VudGVyMRswGQYDVQQDExJUZW5wYXkuY29tIFJvb3Qg
+Q0EwHhcNMTkwNjExMDcxMjAxWhcNMjQwNjA5MDcxMjAxWjB7MRMwEQYDVQQDDAox
+NTM1Mzg5NDYxMRswGQYDVQQKDBLlvq7kv6HllYbmiLfns7vnu58xJzAlBgNVBAsM
+HuS4iua1t+WNjuafk+WMluW3peaciemZkOWFrOWPuDELMAkGA1UEBgwCQ04xETAP
+BgNVBAcMCFNoZW5aaGVuMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA
+pv1TCEJXbaNHcndGOO+G6VkY61wyrRz0P8JAx474md1H18hmFMPXZs+bEJwkIiUI
+WA5A4xmY7kXtsvj8sK8n1K+Iq92wofyKyvc4pY4+huWRK7yYQrW1Rm7KmzLrBR05
+R9GZXdXZv1ly6QLoonZgAq04WaIkPfsNG1VK6oqul+fZ+qOzBiLxN+FruCkVg0vS
+QS7HlLno6l3voxD+sld7G0y9CvFQx043D9tv+q5rjIdKsnNEarGlbkSN1IqRfoDl
+53wMzTPV55HwBZ8+SN/ysFIfD3kCqqPJALWDK2d3ODsQ2T46HXbulGaj7PP9lsGH
+/XQfOP5FKM36ygB0hpJP6wIDAQABo4GBMH8wCQYDVR0TBAIwADALBgNVHQ8EBAMC
+BPAwZQYDVR0fBF4wXDBaoFigVoZUaHR0cDovL2V2Y2EuaXRydXMuY29tLmNuL3B1
+YmxpYy9pdHJ1c2NybD9DQT0xQkQ0MjIwRTUwREJDMDRCMDZBRDM5NzU0OTg0NkMw
+MUMzRThFQkQyMA0GCSqGSIb3DQEBCwUAA4IBAQAp3nUXvkarWCXnQhsQeeaIw+wV
+vsfNsA7YDoQzf5DvWSpxQx97mlqhVDfDGhQOjVNXV3hINh/DUfWJPL6boRY1sT1K
+58OHCOXbSKyMO7cFOkY9lQnyNA+d4Haic1Ga5CZUXfVwJqbRINKnCDyUcxb4Cekd
+K+/zVbkBD2EdbqyJcag/roobjMndXzQ2FXPorF9ihA4vKcBAKMUDbkzvITB3OL/N
+tDtpFaaa2k1VzhbTEESUEgacXx8D3KggQzYt3Xu7cjKK7aLIZECjO6LvWLMDoiYT
+c6JeXgthtjpEFMdfWVJA2sQkSwEBxtwRuePpD41g7ZTUi0yPfmUjguHOHWDD
+-----END CERTIFICATE-----';
+      $keyPemFile = '-----BEGIN PRIVATE KEY-----
+MIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQCm/VMIQldto0dy
+d0Y474bpWRjrXDKtHPQ/wkDHjviZ3UfXyGYUw9dmz5sQnCQiJQhYDkDjGZjuRe2y
++PywryfUr4ir3bCh/IrK9ziljj6G5ZErvJhCtbVGbsqbMusFHTlH0Zld1dm/WXLp
+AuiidmACrThZoiQ9+w0bVUrqiq6X59n6o7MGIvE34Wu4KRWDS9JBLseUuejqXe+j
+EP6yV3sbTL0K8VDHTjcP22/6rmuMh0qyc0RqsaVuRI3UipF+gOXnfAzNM9XnkfAF
+nz5I3/KwUh8PeQKqo8kAtYMrZ3c4OxDZPjoddu6UZqPs8/2WwYf9dB84/kUozfrK
+AHSGkk/rAgMBAAECggEAZrNSB7hVcNaEsH9ursGRpZ3oV4gCmrk99qCPmqvxdR/E
+eY+ESK0Roud3pMWC64T/Frjda05o4dIcGIBNWJTA2GuEkL7tTRK2gZF+Q0OybOBv
+YgjBU/XRIRoufTjZlfGdMvBTdIR7QNXQeEITtSc8cSj7iRTRWVU3gGH6izjzm/Q7
+OMxj7ZvTqhZ/2DGDu5Jtbbm0qPi5T5rzM+2YhVoUNz5yRhZmjSrDeYU3DvYQ+p0e
+GevQemPwEcU6+9m6xOibWi8xZ6/qPamC9y2ICBRbphe1E/mod4O0XmNO5wB9TIsy
+6+fLb/eQu9Y8aH6v7Av0I3gxesLBfLsPcbegaYcoUQKBgQDbJZeYsI92qjcMbyZM
+fqBnGktNDF+TK6t1Q6an8KnXmI7X46uaYeBszH/zUvD9rbQjot9qA3bjugSiPo8F
+gxwaUQJM10HhB/su92wuFGDVQuneVQpCrAwE/hNOlrojSHxqG9wkJwrVXTsUqd3D
+e5avU2U31KGRgLhmKOvmgW/6vQKBgQDDElQCSbAT0ECvZcLtuPWyxPsQufyZWOUk
++pAGezzAYDYXoYuf8Lt9OzxjAdI8ngOvfsqTCZgoWEKiRWDv0ngdVpBwj/8hO/2k
+nAX5KiQqGhfwK0EhnvcDHgkg0C5SuSHTXtgcpVIxZ82YZAfvA9vFJMpxPK1P9JPE
+8iFVPmnzxwKBgQCN4wkEE0zPx+VcZ5qkbFfuaVfXyusWnm+kvOhqU6ejr2LM5Nt2
+WWi1CLLPGCRwGsdHS2zbduLDDu1xHo/7QagwYcLbfYNp74DyJ8AjFY6chXZmPSkn
+gb1GfjqB55UcwxHKob8mqSCahIJ8Hn820g399kDSpRj23CCIBHa4B5Y5AQKBgHPb
+kuG4+kcKTSDfg6LFU8hVjfglPo2lapNH7fqrfy2S9w2Z+N+JjxGV+QukrUUrZGz7
+FT23WRO9N/ZA1o4ZpxVlsGvqWlFW3BLESBfwm4IV9VnDlu9tBrBnSmyeuKSRKDHu
+BtUcq3CEgmucHcortH+mlkYjD5yJWqqCVKHYa/1JAoGBAIGkra40Vmc82ca5/4/s
+eUy3GK2WeMmImnQLvQnrZ34c/VryryA2gECArO+KxnvVeD5Ri54/Swj4b2huw5qq
+zuxgnIHRU0eE4VClsTpwNmAU/QXrtLJSTv3ZhwCWodegJd4vWA6smRiD8WxtgqbL
+BWBk1Hk9OrYeRniRDbEnu79P
+-----END PRIVATE KEY-----';
+
+      $wechatPay = new WechatPay([
+          'certPemFile' => $certPemFile,
+          'keyPemFile' => $keyPemFile,
+          'mchId' => $mchId,
+          'appId' => $appId,
+          'key' => $key,
+      ]);
+
+      $body = 'SN'.time();
+
+      $res = $wechatPay->unifiedOrder([
+            'body' => $body,
+            'out_trade_no' => 'SN'.date('YmdHis').time(),
+            'total_fee' => '1',
+            'notify_url' => 'http://pay-notify.php',
+            'trade_type' => 'JSAPI',
+            'openid' => $openid,
+        ]);
+
+      $pay_data = [
+                'appId' => $appId,
+                'timeStamp' => '' . time(),
+                'nonceStr' => $res['nonce_str'], //md5(uniqid())也可以
+                'package' => 'prepay_id=' . $res['prepay_id'],
+                'signType' => 'MD5',
+            ];
+
+      $pay_data['paySign'] = $wechatPay->makeSign($pay_data);
+
+      $result =  [
+          'code' => 0,
+          'msg' => 'success',
+          'data' => (object)$pay_data,
+          'res' => $res,
+          'body' => $body,
+      ];
+
+      return json_encode($result);
+    }
+}

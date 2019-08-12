@@ -6,7 +6,8 @@
     "pages/push/push",
     "pages/qqmap/qqmap",
     "pages/locate/locate",
-    "pages/users/users"
+    "pages/users/users",
+    "pages/pay/pay"
   ],
   "window": {
     "backgroundTextStyle": "light",
