@@ -41,3 +41,10 @@
       </navigator>
   </view>
 </view>
+
+
+<view class="container">
+  <view >
+    <text >time:{{time}}</text>
+  </view>
+</view>

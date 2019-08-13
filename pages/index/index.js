@@ -1,14 +1,19 @@
 //index.js
 //获取应用实例
 const app = getApp()
+var fromjs = require("../../utils/util.js");
 
 Page({
   data: {
     motto: 'Hello World',
     userInfo: {},
     hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo')
+    canIUse: wx.canIUse('button.open-type.getUserInfo'),
+    time: 1529719268,
   },
+
+
+
   //事件处理函数
   bindViewTap: function() {
     wx.navigateTo({
@@ -16,6 +21,10 @@ Page({
     })
   },
   onLoad: function () {
+    this.setData({
+      time: fromjs.tsFormatTime(1565599142000, 'Y-M-D h:m:s'),
+    })
+
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,
