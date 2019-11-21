@@ -1,6 +1,12 @@
 <!--index.wxml-->
+<input bindinput="setno"  name="setno" value="{{setno}}" style="height: 25px;width: 100%;background-color: #DEDEDE;"></input>
+
 <form  report-submit='true' bindsubmit='postPay'>
       <button form-type="submit" >支付</button>
+</form>
+
+<form  report-submit='true' bindsubmit='refund'>
+      <button form-type="submit" >退款</button>
 </form>
 
 

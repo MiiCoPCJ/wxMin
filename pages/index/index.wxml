@@ -40,6 +40,11 @@
           <view>支付</view>
       </navigator>
   </view>
+  <view class="">
+      <navigator class="nav-item" url="/pages/region/region">
+          <view>地区</view>
+      </navigator>
+  </view>
 </view>
 
 

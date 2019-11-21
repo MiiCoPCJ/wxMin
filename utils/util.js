@@ -38,7 +38,33 @@ function tsFormatTime(timestamp, format) {
 
 }
 
+// function sels(arr) {
+//   var $sel = $("<select name='driver_regions[]'><option value='-1' >--请选择区域--</option></select>");
+
+//   $(arr).each(function (index, num) {
+//     var $opts = $("<option value=" + num.id + " >" + num.name + "</option>");
+//     $sel.append($opts);
+
+//   });
+//   $sel.change(function () {
+//     while (this != this.parentNode.lastChild) {
+//       this.parentNode.removeChild(this.parentNode.lastChild);
+//     }
+//     var i = this.selectedIndex;
+//     var cata = arr[i - 1];
+//     if (i != 0 && cata.children) {
+//       sels(cata.children)
+//     }
+//   });
+//   $("#xialakuang").append($sel);
+
+
+// }
+
+
 module.exports = {
+  //sels: sels,
   formatTime: formatTime,
-  tsFormatTime:tsFormatTime
+  tsFormatTime: tsFormatTime
+
 }

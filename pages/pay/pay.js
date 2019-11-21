@@ -4,15 +4,27 @@ const app = getApp()
 
 Page({
   data: {
+    setno:'',
   },
 
   onLoad: function () {
+    var date = new Date();
+    var t = date.getFullYear()+''+date.getMonth()+''+date.getDate();
+    this.setData({
+      setno: t
+    });
   },
 
+  setno: function(t) {
+    this.setData({
+      setno: t.detail.value
+    });
+  },
 
-
-  //获取经纬度
+  //
   postPay() {
+    var e = this;
+
     var url = 'http://advance.back/index.php?r=default/pay';
     var appId = 'wxf1ccf2bf44c7b499';
     var secret = '91950ce77ffba8c0ac70f19f863a7292';
@@ -20,7 +32,7 @@ Page({
     wx.request({
       url: url,
       data: {
-
+        no:e.data.setno,
       },
       header: {
         'content-type': 'application/json' //默认值
@@ -62,6 +74,31 @@ Page({
             });
           }
         });
+      },
+      fail:function(res){
+        console.log(res);
+      }
+    })
+
+  },
+
+
+  refund() {
+    var e = this;
+    var url = 'http://advance.back/index.php?r=default/refund';
+    var appId = 'wxf1ccf2bf44c7b499';
+    var secret = '91950ce77ffba8c0ac70f19f863a7292';
+    var openid = 'oFMhW4zOSgGRklkHUay3TaJO3vKg';
+    wx.request({
+      url: url,
+      data: {
+        no:e.data.setno,
+      },
+      header: {
+        'content-type': 'application/json' //默认值
+      },
+      success: function (res) {
+        console.log(res);
       },
       fail:function(res){
         console.log(res);

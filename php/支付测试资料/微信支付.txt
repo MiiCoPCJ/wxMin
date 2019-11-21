@@ -1,8 +1,8 @@
-API√‹‘ø:  3hIOHNd823j8hfa2hI7nMva25dCa9j0n
-≤Ÿ◊˜√‹¬Î:  9hiIN#nXCV85g
+APIÂØÜÈí•:  3hIOHNd823j8hfa2hI7nMva25dCa9j0n
+Êìç‰ΩúÂØÜÁ†Å:  9hiIN#nXCV85g
 
-…Ãªß∫≈£∫1535389461
-apiclient_cert.pem£∫
+ÂïÜÊà∑Âè∑Ôºö1535389461
+apiclient_cert.pemÔºö
 -----BEGIN CERTIFICATE-----
 MIID6TCCAtGgAwIBAgIUH2aZ2lR+XQSELSDNQlcEO9FhPv8wDQYJKoZIhvcNAQEL
 BQAwXjELMAkGA1UEBhMCQ04xEzARBgNVBAoTClRlbnBheS5jb20xHTAbBgNVBAsT
@@ -26,7 +26,7 @@ K+/zVbkBD2EdbqyJcag/roobjMndXzQ2FXPorF9ihA4vKcBAKMUDbkzvITB3OL/N
 tDtpFaaa2k1VzhbTEESUEgacXx8D3KggQzYt3Xu7cjKK7aLIZECjO6LvWLMDoiYT
 c6JeXgthtjpEFMdfWVJA2sQkSwEBxtwRuePpD41g7ZTUi0yPfmUjguHOHWDD
 -----END CERTIFICATE-----
-apiclient_key.pem£∫
+apiclient_key.pemÔºö
 -----BEGIN PRIVATE KEY-----
 MIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQCm/VMIQldto0dy
 d0Y474bpWRjrXDKtHPQ/wkDHjviZ3UfXyGYUw9dmz5sQnCQiJQhYDkDjGZjuRe2y
