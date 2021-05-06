@@ -8,7 +8,9 @@
     "pages/locate/locate",
     "pages/users/users",
     "pages/pay/pay",
-    "pages/region/region"
+    "pages/region/region",
+    "pages/temp/temp",
+    "pages/driverjs/driverjs"
   ],
   "window": {
     "backgroundTextStyle": "light",

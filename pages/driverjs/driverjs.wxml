@@ -1,0 +1,32 @@
+<!--index.wxml-->
+<form  report-submit='true' bindsubmit='actionFeature'>
+      <button form-type="submit" >效果</button>
+</form>
+
+<view class="container">
+
+  <div class="page-wrap">
+    <section class="section__header" id="create-post">
+      <h1 class="brand">
+        <!-- <img id="logo_img" src="/pages/driverjs/driver.png" class=""> -->
+        <span id="name_driver">Driver.js</span>
+      </h1>
+      <p class="text-muted tagline">Light-weight, no-dependency, vanilla JavaScript engine to drive user's focus across
+        the
+        page</p>
+
+      <a id="animated-tour" href="javascript:void(0)" class="btn btn__example btn__dark">With Animation</a>
+      <a id="boring-tour" href="javascript:void(0)" class="btn btn__example btn__dark">Without Animation</a>
+
+      <div class="github-button top-30">
+        <!-- Place this tag where you want the button to render. -->
+        <span></span>
+      </div>
+
+    </section>
+
+    
+
+    
+  </div>
+</view>

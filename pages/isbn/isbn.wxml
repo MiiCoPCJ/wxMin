@@ -1,0 +1,12 @@
+<!--index.wxml-->
+<form  report-submit='true' bindsubmit='scan'>
+      <button form-type="submit" >扫描</button>
+</form>
+
+
+
+<view class="container">
+  <view >
+    <text >data:{{data}}</text>
+  </view>
+</view>

@@ -62,6 +62,21 @@ Page({
     console.log(wx.getStorageSync('openid'));
   },
 
+  //跳转小程序
+  otherWX:function(){
+    wx.navigateToMiniProgram({
+      appId: 'wx0aa72319b1c96bcf',
+      path: 'page/index/index',
+      extraData: {
+        foo: 'bar'
+      },
+      envVersion: 'develop',
+      success(res) {
+        // 打开成功
+      }
+    })
+  },
+
   //保存formId
   saveformIdOutline:function(e){
     console.log(e.detail.formId);
