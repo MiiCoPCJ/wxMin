@@ -4,56 +4,61 @@
   <view class="usermotto">
     <text class="user-motto">{{motto}}</text>
   </view>
-  <view class="">
+  <view class="row">
       <navigator class="nav-item" url="/pages/map/map">
           <view>地图</view>
       </navigator>
   </view>
-  <view class="">
+  <view class="row">
       <navigator class="nav-item" url="/pages/push/push">
           <view>推送</view>
       </navigator>
   </view>
-  <view class="">
+  <view class="row">
       <navigator class="nav-item" url="/pages/qqmap/qqmap">
           <view>qq地图</view>
       </navigator>
   </view>
-  <view class="">
+  <view class="row">
       <navigator class="nav-item" url="/pages/locate/locate">
           <view>locate</view>
       </navigator>
   </view>
-  <view class="">
+  <view class="row">
       <navigator class="nav-item" url="/pages/users/users">
           <view>用户</view>
       </navigator>
   </view>
-  <view class="">
+  <view class="row">
       <navigator class="nav-item" url="/pages/pay/pay">
           <view>支付</view>
       </navigator>
   </view>
-  <view class="">
+  <view class="row">
       <navigator class="nav-item" url="/pages/region/region">
           <view>地区</view>
       </navigator>
   </view>
-  <view class="">
+  <view class="row">
       <navigator class="nav-item" url="/pages/driverjs/driverjs">
           <view>driverjs</view>
       </navigator>
   </view>
-  <view class="">
+  <view class="row">
         <navigator class="nav-item" url="/pages/temp/temp">
             <view>temp</view>
         </navigator>
   </view>
-  <view class="">
+  <view class="row">
           <navigator class="nav-item" url="/pages/isbn/isbn">
               <view>isbn</view>
           </navigator>
     </view>
+    <view class="row">
+              <navigator class="nav-item" url="/pages/signature/signature">
+                  <view>signature</view>
+              </navigator>
+        </view>
 </view>
 
 

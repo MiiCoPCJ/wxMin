@@ -1,0 +1,12 @@
+<view class="signName">
+ <canvas class="canvas" id="canvas" canvas-id="canvas" disable-scroll="true" bindtouchstart="canvasStart"
+  bindtouchmove="canvasMove" bindtouchend="canvasEnd" touchcancel="canvasEnd"
+  binderror="canvasIdErrorCallback"></canvas>
+ </view>
+ <view class="CList flex"></view>
+ <view class="flex_item marginR20" >
+  <view class="saveBtn" bindtap="uploadImg">上传签名</view>
+ </view>
+ <view class="flex_item">
+  <view class="clearBtn" bindtap="cleardraw">清除签名</view>
+</view>

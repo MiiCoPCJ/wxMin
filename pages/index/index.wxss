@@ -1,4 +1,9 @@
 /**index.wxss**/
+.container {
+    width:100%;
+    display:inline-block;
+}
+
 .userinfo {
   display: flex;
   flex-direction: column;
@@ -18,4 +23,10 @@
 
 .usermotto {
   margin-top: 20px;
+}
+
+.row{
+    width:33%;
+    float:left;
+    text-align:center;
 }
