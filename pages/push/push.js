@@ -33,6 +33,15 @@ Page({
 
   },
 
+  newPush:function(){
+    wx.requestSubscribeMessage({
+      tmplIds: ['fTT3u__YmtBNfn3TLQ2GVEIsOJk0_lLNBzkHjbLftBc'],
+      success (res) {
+          console.log(res);
+       }
+    })
+  },
+
   //登录获取openid并存缓存
   login:function(){
     wx.login({
